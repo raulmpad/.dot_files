@@ -93,8 +93,9 @@ set visualbell
 " ---------------------------------------------------------
 " 12 selecting text
 " ---------------------------------------------------------
-
+nmap <Space>p "*P
 "set clipboard=unnamedplus
+
 
 " ---------------------------------------------------------
 " 13 editing text
@@ -291,6 +292,7 @@ NeoBundle 'h1mesuke/unite-outline'
 map <Space>o <ESC>:Unite -start-insert outline<CR>
 " ------------ Unite-vimfiler
 NeoBundle 'Shougo/vimfiler.vim'
+map <Space>f <ESC>:VimFiler<CR>
 
 NeoBundleCheck
 
@@ -305,7 +307,8 @@ if has("gui_macvim")
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
   set guioptions-=L  "remove left-hand scroll bar
-  colorscheme railscasts
+  colorscheme twilight
+  set guifont=Iconsolata\ for\ Powerline:14
 else
   colorscheme sexy-railscasts-256
 endif
