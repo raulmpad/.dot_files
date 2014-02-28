@@ -55,10 +55,10 @@ map <Leader>m <ESC>:bp<CR>
 map <Leader>. <ESC>:bn<CR>
 map <Leader>k <ESC>:bd<CR>
 
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+map <Space>h <C-w>h
+map <Space>j <C-w>j
+map <Space>k <C-w>k
+map <Space>l <C-w>l
 
 " ---------------------------------------------------------
 " 7 multiple tab pages
@@ -170,9 +170,9 @@ set wildmode=longest,list,full
 autocmd BufRead,BufNewFile *.hamlc  set filetype=haml
 autocmd BufRead,BufNewFile *.coffee set filetype=coffee
 
-nmap <Space>rm :Rmodel 
-nmap <Space>rc :Rcontroller 
-nmap <Space>rv :Rview 
+nmap <Space>rm :Rmodel
+nmap <Space>rc :Rcontroller
+nmap <Space>rv :Rview
 
 
 " ---------------------------------------------------------
@@ -198,7 +198,7 @@ endfunction
 inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 
 " ---------------------------------------------------------
-" 26 NeoBundle 
+" 26 NeoBundle
 "
 " May require previous NeoBundle manual installation
 " ---------------------------------------------------------
@@ -251,6 +251,11 @@ NeoBundle 'tpope/vim-rails'
 " NeoBundle 'Shuogo/vimshell'
 " ------------- Tabularice
 NeoBundle 'godlygeek/tabular'
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+
 " ------------- CoffeeScript
 NeoBundle 'kchmck/vim-coffee-script'
 " ------------- Vim-Ruby
@@ -268,7 +273,7 @@ if executable('ag')
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
   let g:unite_source_grep_recursive_opt = ''
-          
+
 endif
 " ------------- Vimproc
 NeoBundle 'Shougo/vimproc', { 'build' : { 'mac' : 'make -f make_mac.mak', }, }
@@ -307,7 +312,7 @@ if has("gui_macvim")
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
   set guioptions-=L  "remove left-hand scroll bar
-  colorscheme twilight
+  colorscheme obsidian2
   set guifont=Iconsolata\ for\ Powerline:14
 else
   colorscheme sexy-railscasts-256
