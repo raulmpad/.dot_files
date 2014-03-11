@@ -21,6 +21,7 @@ set smartcase
 " ---------------------------------------------------------
 " 3 tags
 " ---------------------------------------------------------
+nmap <Space><Leader> <C-]>
 
 " ---------------------------------------------------------
 " 4 displaying text
@@ -53,7 +54,7 @@ map <C-x>1  <ESC>:BufOnly<CR>
 map <C-x>x <ESC>:hide<CR>
 map <Leader>m <ESC>:bp<CR>
 map <Leader>. <ESC>:bn<CR>
-map <Leader>k <ESC>:bd<CR>
+map <Leader>k <ESC>:Bdelete<CR>
 
 map <Space>h <C-w>h
 map <Space>j <C-w>j
@@ -141,7 +142,7 @@ inoremap <C-k> <C-p>
 nmap <Esc><Esc> :w<CR>
 vmap <Esc><Esc> <Esc><c-s>gv
 imap <Esc><Esc> <Esc><Esc><Esc>
-map <C-o> <ESC>:Ex<CR>
+" map <C-o> <ESC>:Ex<CR>
 noremap <C-e> <ESC>:Explore<CR>
 
 " ---------------------------------------------------------
@@ -170,9 +171,9 @@ set wildmode=longest,list,full
 autocmd BufRead,BufNewFile *.hamlc  set filetype=haml
 autocmd BufRead,BufNewFile *.coffee set filetype=coffee
 
-nmap <Space>rm :Rmodel
-nmap <Space>rc :Rcontroller
-nmap <Space>rv :Rview
+nmap <Space>rm :Rmodel 
+nmap <Space>rc :Rcontroller 
+nmap <Space>rv :Rview 
 
 
 " ---------------------------------------------------------
@@ -196,6 +197,9 @@ function! Tab_Or_Complete()
   endif
 endfunction
 inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+
+" abrreviations
+abbreviate soap saven_and_open_page 
 
 " ---------------------------------------------------------
 " 26 NeoBundle
@@ -268,11 +272,11 @@ nnoremap <Space><Space> :Unite -start-insert file_rec/async<CR>
 nnoremap <C-a> :Unite buffer<CR>
 let g:unite_split_rule = 'botright'
 if executable('ag')
-  let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".agignore" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
-  " let g:unite_source_rec_async_command='ag %s -l --column --nocolor -g ""'
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-  let g:unite_source_grep_recursive_opt = ''
+let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".agignore" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
+" let g:unite_source_rec_async_command='ag %s -l --column --nocolor -g ""'
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+let g:unite_source_grep_recursive_opt = ''
 
 endif
 " ------------- Vimproc
@@ -298,6 +302,25 @@ map <Space>o <ESC>:Unite -start-insert outline<CR>
 " ------------ Unite-vimfiler
 NeoBundle 'Shougo/vimfiler.vim'
 map <Space>f <ESC>:VimFiler<CR>
+" ------------ Dispatcher
+NeoBundle 'tpope/vim-dispatch'
+" ------------ vim-rspec
+NeoBundle 'thoughtbot/vim-rspec'
+map <Leader>tt :call RunCurrentSpecFile()<CR>
+map <Leader>ts :call RunNearestSpec()<CR>
+map <Leader>tl :call RunLastSpec()<CR>
+map <Leader>ta :call RunAllSpecs()<CR>
+let g:rspec_command = 'compiler rspec | set makeprg=zeus | Make rspec {spec}'
+let g:rspec_runner  = 'os_x_iterm'
+" let g:rspec_command = ':Dispatch zeus rspec {spec}'
+" ------------ moll/vim-bbye
+NeoBundle 'moll/vim-bbye'
+" ------------ tpope/vim-rvm
+NeoBundle 'tpope/vim-rvm'
+augroup rvm
+  autocmd!
+  autocmd BufEnter * Rvm
+augroup END
 
 NeoBundleCheck
 
@@ -317,5 +340,3 @@ if has("gui_macvim")
 else
   colorscheme sexy-railscasts-256
 endif
-
-set wildignore+=app/assets/javascripts/DataTables-1.9.2/*
