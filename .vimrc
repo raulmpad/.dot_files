@@ -171,9 +171,9 @@ set wildmode=longest,list,full
 autocmd BufRead,BufNewFile *.hamlc  set filetype=haml
 autocmd BufRead,BufNewFile *.coffee set filetype=coffee
 
-nmap <Space>rm :Rmodel 
-nmap <Space>rc :Rcontroller 
-nmap <Space>rv :Rview 
+nmap <Space>rm :Rmodel<Space>
+nmap <Space>rc :Rcontroller<Space>
+nmap <Space>rv :Rview<Space>
 
 
 " ---------------------------------------------------------
@@ -199,7 +199,7 @@ endfunction
 inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 
 " abrreviations
-abbreviate soap saven_and_open_page 
+abbreviate soap saven_and_open_page<Space>
 
 " ---------------------------------------------------------
 " 26 NeoBundle
@@ -321,6 +321,9 @@ augroup rvm
   autocmd!
   autocmd BufEnter * Rvm
 augroup END
+" ------------ vim-scripts/TailMinusF
+NeoBundle 'vim-scripts/TailMinusF'
+
 
 NeoBundleCheck
 
