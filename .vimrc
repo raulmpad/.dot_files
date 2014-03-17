@@ -170,9 +170,9 @@ set wildmode=longest,list,full
 autocmd BufRead,BufNewFile *.hamlc  set filetype=haml
 autocmd BufRead,BufNewFile *.coffee set filetype=coffee
 
-nmap <Space>rm :Rmodel
-nmap <Space>rc :Rcontroller
-nmap <Space>rv :Rview
+nmap <Space>rm :Rmodel 
+nmap <Space>rc :Rcontroller 
+nmap <Space>rv :Rview 
 
 
 " ---------------------------------------------------------
@@ -234,7 +234,7 @@ if executable('ag')
 endif
 let g:ctrlp_working_path_mode = 'ra'
 " Own search mapping
-nnoremap <C-f>f :Ag
+nnoremap <C-f>f :Ag 
 " bind to grep word under cursor
 nnoremap <C-f>w :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " ------------- BufOnly
@@ -245,6 +245,8 @@ NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'scrooloose/syntastic'
 " ------------- Fugitive
 NeoBundle 'tpope/vim-fugitive'
+nmap <Leader>gs :Gstatus<CR>
+
 " ------------- Vim-Rails
 NeoBundle 'tpope/vim-rails'
 " ------------- Vimshell
@@ -283,6 +285,12 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 " ------------- Vim-unimpaired
 NeoBundle 'tpope/vim-unimpaired'
+nmap < [
+nmap > ]
+omap < [
+omap > ]
+xmap < [
+xmap > ]
 " ------------- Vim-commantary
 NeoBundle 'tpope/vim-commentary'
 nmap <Space>c gcc<CR>
@@ -298,6 +306,8 @@ map <Space>o <ESC>:Unite -start-insert outline<CR>
 " ------------ Unite-vimfiler
 NeoBundle 'Shougo/vimfiler.vim'
 map <Space>f <ESC>:VimFiler<CR>
+" ------------ shawncplus/skittles_berry
+NeoBundle 'shawncplus/skittles_berry'
 
 NeoBundleCheck
 

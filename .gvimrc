@@ -29,7 +29,7 @@ set antialias linespace=2
 set guifont=Ubuntu\ Mono\ derivative\ Powerline:h14
 
 " open in full screen mode!
-set fuoptions=maxvert,maxhorz
-au GUIEnter * set fullscreen
+" set fuoptions=maxvert,maxhorz
+" au GUIEnter * set fullscreen
 
 " vim:foldenable:fdm=marker
