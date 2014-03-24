@@ -121,6 +121,8 @@ set softtabstop=2
 set expandtab
 set autoindent
 set smartindent
+let g:html_indent_inctags = "html,body,head,tbody"
+
 
 " ---------------------------------------------------------
 " 15 folding
@@ -289,12 +291,12 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 " ------------- Vim-unimpaired
 NeoBundle 'tpope/vim-unimpaired'
-nmap < [
-nmap > ]
-omap < [
-omap > ]
-xmap < [
-xmap > ]
+" nmap < [
+" nmap > ]
+" omap < [
+" omap > ]
+" xmap < [
+" xmap > ]
 " ------------- Vim-commantary
 NeoBundle 'tpope/vim-commentary'
 nmap <Space>c gcc<CR>
@@ -331,6 +333,15 @@ augroup rvm
   autocmd!
   autocmd BufEnter * Rvm
 augroup END
+" ----------- mattn/emmet-vim
+NeoBundle 'mattn/emmet-vim'
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+let g:user_emmet_mode='a'
+let g:user_emmet_leader_key='<Tab>'
+" ----------- tristen/vim-sparkup
+NeoBundle 'tristen/vim-sparkup'
+let g:sparkupNextMapping='<Leader>n'
 
 NeoBundleCheck
 
