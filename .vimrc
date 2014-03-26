@@ -123,6 +123,8 @@ set softtabstop=2
 set expandtab
 set autoindent
 set smartindent
+let g:html_indent_inctags = "html,body,head,tbody"
+
 
 " ---------------------------------------------------------
 " 15 folding
@@ -327,11 +329,18 @@ augroup rvm
   autocmd!
   autocmd BufEnter * Rvm
 augroup END
-" ------------ vim-scripts/TailMinusF
-NeoBundle 'vim-scripts/TailMinusF'
 " ------------ ngmy/vim-rubocop
 NeoBundle 'ngmy/vim-rubocop'
 let g:vimrubocop_config = '~/kantox-flow/rubocop.yml'
+" ----------- mattn/emmet-vim
+NeoBundle 'mattn/emmet-vim'
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+let g:user_emmet_mode='a'
+let g:user_emmet_leader_key='<Tab>'
+" ----------- tristen/vim-sparkup
+NeoBundle 'tristen/vim-sparkup'
+let g:sparkupNextMapping='<Leader>n'
 
 NeoBundle 'jgdavey/tslime.vim'
 
