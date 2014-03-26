@@ -110,6 +110,8 @@ map <Leader><Leader>i <ESC>gg=G<CR>
 inoremap kj <ESC>
 " doubles line
 nmap <Leader>d YP
+" close all buffers
+nmap <Leader><Leader>k :bufdo bdelete<CR>
 
 " ---------------------------------------------------------
 " 14 tabs and indenting
@@ -223,6 +225,7 @@ NeoBundle 'scrooloose/nerdtree'
 map <Space>n :NERDTreeToggle<CR>
 " ------------- Ctrl-P
 NeoBundle 'kien/ctrlp.vim'
+nmap <C-a> :CtrlPBuffer<CR>
 " ------------- Ag
 NeoBundle 'rking/ag.vim'
 if executable('ag')
@@ -238,7 +241,7 @@ if executable('ag')
 endif
 let g:ctrlp_working_path_mode = 'ra'
 " Own search mapping
-nnoremap <C-f>f :Ag 
+nnoremap <C-f>f :Ag!<Space>
 " bind to grep word under cursor
 nnoremap <C-f>w :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " ------------- BufOnly
@@ -269,18 +272,17 @@ NeoBundle 'vim-ruby/vim-ruby'
 " ------------- Multiple-Cursors
 NeoBundle 'terryma/vim-multiple-cursors'
 " ------------- Unite
-NeoBundle 'Shougo/unite.vim'
-nnoremap <Space><Space> :Unite -start-insert file_rec/async<CR>
-nnoremap <C-a> :Unite buffer<CR>
-let g:unite_split_rule = 'botright'
-if executable('ag')
-let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".agignore" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
+" NeoBundle 'Shougo/unite.vim'
+" nnoremap <Space><Space> :Unite -start-insert file_rec/async<CR>
+" nnoremap <C-a> :Unite buffer<CR>
+" let g:unite_split_rule = 'botright'
+" if executable('ag')
+" let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".agignore" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
 " let g:unite_source_rec_async_command='ag %s -l --column --nocolor -g ""'
-let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-let g:unite_source_grep_recursive_opt = ''
-
-endif
+" let g:unite_source_grep_command = 'ag'
+" let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+" let g:unite_source_grep_recursive_opt = ''
+" endif
 " ------------- Vimproc
 NeoBundle 'Shougo/vimproc', { 'build' : { 'mac' : 'make -f make_mac.mak', }, }
 " ------------- Vim-surround
@@ -289,12 +291,6 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 " ------------- Vim-unimpaired
 NeoBundle 'tpope/vim-unimpaired'
-nmap < [
-nmap > ]
-omap < [
-omap > ]
-xmap < [
-xmap > ]
 " ------------- Vim-commantary
 NeoBundle 'tpope/vim-commentary'
 nmap <Space>c gcc<CR>
@@ -320,9 +316,9 @@ map <Leader>tt :call RunCurrentSpecFile()<CR>
 map <Leader>ts :call RunNearestSpec()<CR>
 map <Leader>tl :call RunLastSpec()<CR>
 map <Leader>ta :call RunAllSpecs()<CR>
-let g:rspec_command = 'compiler rspec | set makeprg=zeus | Make rspec {spec}'
+" let g:rspec_command = 'compiler rspec | set makeprg=zeus | Make rspec {spec}'
 let g:rspec_runner  = 'os_x_iterm'
-" let g:rspec_command = ':Dispatch zeus rspec {spec}'
+let g:rspec_command = ':Dispatch zeus rspec {spec}'
 " ------------ moll/vim-bbye
 NeoBundle 'moll/vim-bbye'
 " ------------ tpope/vim-rvm
@@ -333,7 +329,11 @@ augroup rvm
 augroup END
 " ------------ vim-scripts/TailMinusF
 NeoBundle 'vim-scripts/TailMinusF'
+" ------------ ngmy/vim-rubocop
+NeoBundle 'ngmy/vim-rubocop'
+let g:vimrubocop_config = '~/kantox-flow/rubocop.yml'
 
+NeoBundle 'jgdavey/tslime.vim'
 
 NeoBundleCheck
 
