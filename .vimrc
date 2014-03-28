@@ -1,4 +1,9 @@
 " ---------------------------------------------------------
+" 0 Command Help
+" :verbose map <C-a> to check where a map is defined
+" ---------------------------------------------------------
+
+" ---------------------------------------------------------
 " 1 Important
 " ---------------------------------------------------------
 set nocompatible
@@ -147,7 +152,7 @@ nmap <Esc><Esc> :w<CR>
 vmap <Esc><Esc> <Esc><c-s>gv
 imap <Esc><Esc> <Esc><Esc><Esc>
 " map <C-o> <ESC>:Ex<CR>
-noremap <C-e> <ESC>:Explore<CR>
+noremap <Space>e <ESC>:Explore<CR>
 
 " ---------------------------------------------------------
 " 19 the swap file
@@ -192,6 +197,7 @@ set termencoding=utf-8
 " reload configuration
 map <Leader><Leader>v :e $MYVIMRC<CR>
 map <Leader><Leader>r :source $MYVIMRC<CR>
+nmap <
 " tries to autocomplete word with Tab
 function! Tab_Or_Complete()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
@@ -204,6 +210,8 @@ inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 
 " abrreviations
 abbreviate soap saven_and_open_page<Space>
+
+
 
 " ---------------------------------------------------------
 " 26 NeoBundle
@@ -337,12 +345,17 @@ NeoBundle 'mattn/emmet-vim'
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 let g:user_emmet_mode='a'
-let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_leader_key='<C-Space>'
 " ----------- tristen/vim-sparkup
 NeoBundle 'tristen/vim-sparkup'
 let g:sparkupNextMapping='<Leader>n'
 
 NeoBundle 'jgdavey/tslime.vim'
+
+" ----------- tyru - Github Integration
+NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'tyru/open-browser-github.vim'
+nmap <Leader><Leader>g :OpenGithubFile<CR>
 
 NeoBundleCheck
 
