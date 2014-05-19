@@ -38,6 +38,7 @@ set fillchars=vert:\|,fold:-
 " shows ^I,$ for tabs and end of line
 " set list
 set relativenumber
+set number
 
 " ---------------------------------------------------------
 " 5 syntax, highlighting and spelling
@@ -252,6 +253,7 @@ endif
 let g:ctrlp_working_path_mode = 'ra'
 " Own search mapping
 nnoremap <C-f>f :Ag!<Space>
+nnoremap <C-f>d :Ag! debugger<CR>
 " bind to grep word under cursor
 nnoremap <C-f>w :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " ------------- BufOnly
@@ -263,6 +265,7 @@ NeoBundle 'scrooloose/syntastic'
 " ------------- Fugitive
 NeoBundle 'tpope/vim-fugitive'
 nmap <Leader>gs :Gstatus<CR>
+nmap <Leader>gb :Gblame<CR>
 
 " ------------- Vim-Rails
 NeoBundle 'tpope/vim-rails'
