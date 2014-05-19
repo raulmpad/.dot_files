@@ -1,4 +1,9 @@
 " ---------------------------------------------------------
+" 0 Command Help
+" :verbose map <C-a> to check where a map is defined
+" ---------------------------------------------------------
+
+" ---------------------------------------------------------
 " 1 Important
 " ---------------------------------------------------------
 set nocompatible
@@ -110,6 +115,8 @@ map <Leader><Leader>i <ESC>gg=G<CR>
 inoremap kj <ESC>
 " doubles line
 nmap <Leader>d YP
+" close all buffers
+nmap <Leader><Leader>k :bufdo bdelete<CR>
 
 " ---------------------------------------------------------
 " 14 tabs and indenting
@@ -145,7 +152,7 @@ nmap <Esc><Esc> :w<CR>
 vmap <Esc><Esc> <Esc><c-s>gv
 imap <Esc><Esc> <Esc><Esc><Esc>
 " map <C-o> <ESC>:Ex<CR>
-noremap <C-e> <ESC>:Explore<CR>
+noremap <Space>e <ESC>:Explore<CR>
 
 " ---------------------------------------------------------
 " 19 the swap file
@@ -190,6 +197,7 @@ set termencoding=utf-8
 " reload configuration
 map <Leader><Leader>v :e $MYVIMRC<CR>
 map <Leader><Leader>r :source $MYVIMRC<CR>
+nmap <
 " tries to autocomplete word with Tab
 function! Tab_Or_Complete()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
@@ -202,6 +210,8 @@ inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 
 " abrreviations
 abbreviate soap saven_and_open_page<Space>
+
+
 
 " ---------------------------------------------------------
 " 26 NeoBundle
@@ -225,6 +235,7 @@ NeoBundle 'scrooloose/nerdtree'
 map <Space>n :NERDTreeToggle<CR>
 " ------------- Ctrl-P
 NeoBundle 'kien/ctrlp.vim'
+nmap <C-a> :CtrlPBuffer<CR>
 " ------------- Ag
 NeoBundle 'rking/ag.vim'
 if executable('ag')
@@ -240,7 +251,7 @@ if executable('ag')
 endif
 let g:ctrlp_working_path_mode = 'ra'
 " Own search mapping
-nnoremap <C-f>f :Ag 
+nnoremap <C-f>f :Ag!<Space>
 " bind to grep word under cursor
 nnoremap <C-f>w :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " ------------- BufOnly
@@ -271,18 +282,17 @@ NeoBundle 'vim-ruby/vim-ruby'
 " ------------- Multiple-Cursors
 NeoBundle 'terryma/vim-multiple-cursors'
 " ------------- Unite
-NeoBundle 'Shougo/unite.vim'
-nnoremap <Space><Space> :Unite -start-insert file_rec/async<CR>
-nnoremap <C-a> :Unite buffer<CR>
-let g:unite_split_rule = 'botright'
-if executable('ag')
-let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".agignore" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
+" NeoBundle 'Shougo/unite.vim'
+" nnoremap <Space><Space> :Unite -start-insert file_rec/async<CR>
+" nnoremap <C-a> :Unite buffer<CR>
+" let g:unite_split_rule = 'botright'
+" if executable('ag')
+" let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".agignore" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
 " let g:unite_source_rec_async_command='ag %s -l --column --nocolor -g ""'
-let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-let g:unite_source_grep_recursive_opt = ''
-
-endif
+" let g:unite_source_grep_command = 'ag'
+" let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+" let g:unite_source_grep_recursive_opt = ''
+" endif
 " ------------- Vimproc
 NeoBundle 'Shougo/vimproc', { 'build' : { 'mac' : 'make -f make_mac.mak', }, }
 " ------------- Vim-surround
@@ -291,12 +301,6 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 " ------------- Vim-unimpaired
 NeoBundle 'tpope/vim-unimpaired'
-" nmap < [
-" nmap > ]
-" omap < [
-" omap > ]
-" xmap < [
-" xmap > ]
 " ------------- Vim-commantary
 NeoBundle 'tpope/vim-commentary'
 nmap <Space>c gcc<CR>
@@ -322,9 +326,9 @@ map <Leader>tt :call RunCurrentSpecFile()<CR>
 map <Leader>ts :call RunNearestSpec()<CR>
 map <Leader>tl :call RunLastSpec()<CR>
 map <Leader>ta :call RunAllSpecs()<CR>
-let g:rspec_command = 'compiler rspec | set makeprg=zeus | Make rspec {spec}'
+" let g:rspec_command = 'compiler rspec | set makeprg=zeus | Make rspec {spec}'
 let g:rspec_runner  = 'os_x_iterm'
-" let g:rspec_command = ':Dispatch zeus rspec {spec}'
+let g:rspec_command = ':Dispatch zeus rspec {spec}'
 " ------------ moll/vim-bbye
 NeoBundle 'moll/vim-bbye'
 " ------------ tpope/vim-rvm
@@ -333,16 +337,25 @@ augroup rvm
   autocmd!
   autocmd BufEnter * Rvm
 augroup END
+" ------------ ngmy/vim-rubocop
+NeoBundle 'ngmy/vim-rubocop'
+let g:vimrubocop_config = '~/kantox-flow/rubocop.yml'
 " ----------- mattn/emmet-vim
 NeoBundle 'mattn/emmet-vim'
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 let g:user_emmet_mode='a'
-let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_leader_key='<C-Space>'
 " ----------- tristen/vim-sparkup
 NeoBundle 'tristen/vim-sparkup'
 let g:sparkupNextMapping='<Leader>n'
 
+NeoBundle 'jgdavey/tslime.vim'
+
+" ----------- tyru - Github Integration
+NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'tyru/open-browser-github.vim'
+nmap <Leader><Leader>g :OpenGithubFile<CR>
 
 NeoBundleCheck
 
