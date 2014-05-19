@@ -1,11 +1,11 @@
 " Only for MacVim !!!
 
-if has("gui_macvim")
-  macmenu &File.New\ Tab key=<nop>
-  map <D-t> :CommandT<CR>
-  macmenu Edit.Find.Find\.\.\. key=<nop>
-  map <D-f> /
-endif
+" if has("gui_macvim")
+  " macmenu &File.New\ Tab key=<nop>
+  " map <D-t> :CommandT<CR>
+  " macmenu Edit.Find.Find\.\.\. key=<nop>
+  " map <D-f> /
+" endif
 "
 " gvim/macvim settings
 "
